@@ -1,0 +1,28 @@
+{
+  "order": ["bg", "body", "nose", "eyes", "mouth"],
+  "rarity": {
+    "bg": {
+      "choices": ["green.png", "blue.png", "purple.png", "space.jpg"],
+      "weights": [45, 35, 15, 5]
+    },
+    "body": {
+      "choices": ["gray.png", "blue.png", "red.png", "yellow.png"],
+      "weights": [35, 30, 25, 10]
+    },
+    "eyes": {
+      "choices": ["wide.png", "down.png", "shocked.png", "high.png", "cyclops.png", "triclops.png"],
+      "weights": [35, 30, 15, 10, 7, 3]
+    },
+     "nose": {
+      "choices": ["none.png", "nose.png"],
+      "weights": [90, 10]
+    },
+
+    "mouth": {
+      "choices": ["meh.png", "shy.png", "wow.png", "wow_low.png", "sing.png","mustache.png", "sneer.png"],
+      "weights": [30, 20,  15, 12, 10, 9, 4]
+    }
+
+
+  }
+}
