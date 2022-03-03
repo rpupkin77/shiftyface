@@ -148,7 +148,7 @@ cython_debug/
 .idea
 
 # app specific
-traits/assets
+traits/*
 output/
 
 # PyCharm

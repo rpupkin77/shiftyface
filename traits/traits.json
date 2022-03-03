@@ -1,26 +1,34 @@
 {
-  "order": ["bg", "body", "nose", "eyes", "mouth"],
+  "order": ["face", "mouth", "eyes","nose", "hair", "ears", "access"],
   "rarity": {
-    "bg": {
-      "choices": ["green.png", "blue.png", "purple.png", "space.jpg"],
-      "weights": [45, 35, 15, 5]
+    "face": {
+      "choices": ["face1.png", "face2.png"],
+      "weights": [40, 60]
     },
-    "body": {
-      "choices": ["gray.png", "blue.png", "red.png", "yellow.png"],
-      "weights": [35, 30, 25, 10]
+    "mouth": {
+      "choices": ["m1.png", "m2.png", "m3.png", "m4.png", "m5.png"],
+      "weights": [30, 25, 20, 16, 10]
     },
     "eyes": {
-      "choices": ["wide.png", "down.png", "shocked.png", "high.png", "cyclops.png", "triclops.png"],
-      "weights": [35, 30, 15, 10, 7, 3]
+      "choices": ["eyes1.png","eyes2.png","eyes3.png","eyes4.png","eyes5.png"],
+      "weights": [40, 30, 20, 7, 3]
     },
-     "nose": {
-      "choices": ["none.png", "nose.png"],
-      "weights": [90, 10]
+    "nose": {
+      "choices": ["n1.png", "n2.png"],
+      "weights": [65, 35]
+    },
+     "hair": {
+      "choices": ["hair1", "hair2", "hair3", "hair4", "hair5", "hair6", "hair7", "hair8", "hair9", "hair10"],
+      "weights": [15, 10, 10, 10, 10, 10, 10, 10, 10, 5]
     },
 
-    "mouth": {
-      "choices": ["meh.png", "shy.png", "wow.png", "wow_low.png", "sing.png","mustache.png", "sneer.png"],
-      "weights": [30, 20,  15, 12, 10, 9, 4]
+    "ears": {
+      "choices": ["ears1.png", "ears2.png", "ears3.png", "ears4.png"],
+      "weights": [45, 25, 20, 10]
+    },
+    "access": {
+      "choices": ["acc1.png", "acc2.png"],
+      "weights": [70, 30]
     }
 
 

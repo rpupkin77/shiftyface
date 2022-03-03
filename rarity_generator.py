@@ -13,7 +13,7 @@ from settings import TRAITS_SETTINGS
 logging.basicConfig(level=logging.INFO)
 
 
-class FaceGenerator(object):
+class RarityGenerator(object):
 
     def __init__(self, count, **kwargs):
 
@@ -156,7 +156,11 @@ class FaceGenerator(object):
         new_image = {}
 
         for i in self.trait_keys:
-            new_image[i] = random.choices(self.rarity[i]['choices'], self.rarity[i]['weights'])[0]
+            try:
+                new_image[i] = random.choices(self.rarity[i]['choices'], self.rarity[i]['weights'])[0]
+            except ValueError as ve:
+                logging.error(f"Error Generating the image from traits (trait: {i}): {ve}")
+                exit()
 
         # if the image already exists, run again, otherwise return the image trait dict
         if new_image in self.generated_images:
