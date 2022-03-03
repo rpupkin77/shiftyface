@@ -1,12 +1,13 @@
-import json
 import csv
-import os
-import shutil
-import random
+import json
 import logging
+import os
+import random
+import shutil
 
 from PIL import Image
-from settings import TRAITS_SETTINGS as traits_settings
+
+from settings import TRAITS_SETTINGS
 
 # configure logging level
 logging.basicConfig(level=logging.INFO)
@@ -24,10 +25,10 @@ class FaceGenerator(object):
         cwd = os.getcwd()
 
         # set up directory attributes from settings
-        traits_directory = traits_settings.get("base_directory", "traits")
-        traits_file = traits_settings.get("traits_file", "traits.json")
-        assets_directory = traits_settings.get("assets_directory", "assets")
-        output_directory = traits_settings.get("output_directory", "output")
+        traits_directory = TRAITS_SETTINGS.get("base_directory", "traits")
+        traits_file = TRAITS_SETTINGS.get("traits_file", "traits.json")
+        assets_directory = TRAITS_SETTINGS.get("assets_directory", "assets")
+        output_directory = TRAITS_SETTINGS.get("output_directory", "output")
 
         # open the traits file and setup image building attributes
         with open(f"{cwd}/{traits_directory}/{traits_file}", "r") as traits_file:
@@ -85,9 +86,9 @@ class FaceGenerator(object):
             a = 0
             for asset in asset_holder:
                 if a == 0:
-                    composite[str(a)] = Image.alpha_composite(asset_holder[a], asset_holder[a+1])
+                    composite[str(a)] = Image.alpha_composite(asset_holder[a], asset_holder[a + 1])
                 else:
-                    composite[str(a)] = Image.alpha_composite(composite[str(a-1)], asset_holder[a])
+                    composite[str(a)] = Image.alpha_composite(composite[str(a - 1)], asset_holder[a])
                 a += 1
             """
             com1 = Image.alpha_composite(asset_holder[0], asset_holder[1])
@@ -97,7 +98,7 @@ class FaceGenerator(object):
             """
 
             # Convert to RGB
-            rgb_image = composite[str(a-1)].convert('RGB')
+            rgb_image = composite[str(a - 1)].convert('RGB')
             file_name = str(item["token_id"]) + "_" + str(item["rarity_score"]) + ".png"
 
             rgb_image.save(f"{self.output_dir}/" + file_name)
