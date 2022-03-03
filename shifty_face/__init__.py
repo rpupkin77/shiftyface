@@ -7,19 +7,21 @@ import shutil
 
 from PIL import Image
 
-from settings import TRAITS_SETTINGS
+from shifty_face.example.settings import TRAITS_SETTINGS
 
 # configure logging level
 logging.basicConfig(level=logging.INFO)
 
 
-class RarityGenerator(object):
+class ShiftyFace(object):
 
     def __init__(self, count, **kwargs):
 
         """
         :param count: the number of billion dollar NFTs to create
         """
+
+        self.dry_run = kwargs.get("dry_run", False)
 
         # get the current working directory for pathing
         cwd = os.getcwd()
@@ -223,12 +225,18 @@ class RarityGenerator(object):
         self._count_traits()
 
         # generate future $$ nfts ;)
-        logging.info("Generating images - may take a moment...")
-        self._generate_images()
+        # don't generate if dry run
+        if not self.dry_run:
+            logging.info("Generating images - may take a moment...")
+            self._generate_images()
 
         # generate inventory file
         logging.debug("Creating image creation log (inventory.csv) in output directory...")
         self._generate_inventory_file()
 
         # send output to console
-        logging.info("Image Generation Complete.")
+        if not self.dry_run:
+            logging.info("Image Generation Complete.")
+        else:
+            logging.info("Dry run complete, check output folder for inventory.csv to see what "
+                         "would have been generated.")

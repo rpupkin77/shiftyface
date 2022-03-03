@@ -148,7 +148,7 @@ cython_debug/
 .idea
 
 # app specific
-traits/*
+shifty_face/example/traits/*
 output/
 
 # PyCharm
